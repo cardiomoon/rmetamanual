@@ -1,0 +1,236 @@
+---
+title: "Web-based Meta-Analysis Using R"
+author: "Keon-Woong Moon"
+date: '`r Sys.time()`'
+output:
+  pdf_document:
+    includes:
+      in_header: header.tex
+    number_sections: yes
+    toc: yes
+    toc_depth: 3
+  html_document:
+    toc: yes
+fontsize: 10pt
+geometry: margin=1in
+documentclass: book
+classoption: b5paper
+---
+
+```{r include=FALSE,cache=FALSE}
+library(knitr)
+
+opts_chunk$set(comment=NA, myCode=TRUE)
+opts_template$set(myFig=list(fig.height=6,fig.width=6))
+knit_hooks$set(
+    myCode=function(before,options,envir){
+        if(before){
+            "\\footnotesize \\color{blue}"
+        } else{
+            "\\normalsize \\color{black}"
+        }
+    })
+```
+
+\chapter{Getting Started}
+
+Welcome to the "Web-based Meta-Analysis Using R". In this chapter, you can perform the first `web-based meta-analysis` of your own using the sample data in a minute. 
+
+\newpage
+\section{Perform Meta-Analysis In A Minute}
+
+\subsection{The first screen : Select language} 
+
+When you load the meta-analysis app, you can see this screen. Currently, this app support English and Korean. You can select your preferred language(arrow).
+
+![1.png](fig/1.png)
+
+\newpage
+\subsection{Steps for meta-analysis}
+
+Performing meta-analysis with sample data is very simple. You can finish in five steps. Of these, just two clicks can do this.
+
+1. Select/Upload Data   ... use default data.
+2. Edit Data          ... No action required.
+3. Select Data Format  ... (1)
+4. Assign Variables  ...(arrow) No action required.
+
+![2.png](fig/2.png)
+
+\newpage
+... And click the `Meta Analysis` button(2).
+ 
+![3.png](fig/3.png)
+
+\newpage
+You can get the meta-analysis results as well as result of homogeneity test followed by the forest plot.
+
+![4.png](fig/4.png)
+
+\newpage
+You can also get the radial plot(s) and the qqplot(s). 
+
+![5.png](fig/5.png)
+
+\newpage
+By default, you can also get the result of influential analysis and plots for influential diagnositics, DFBETAS plot followed by best linear unbiased prectictions(BLUP) and BLUP plot.
+
+![6.png](fig/6.png)
+
+\newpage
+
+![7.png](fig/7.png)
+
+\newpage
+\subsection{Download Results}
+
+You can download Report(1) as PDF(\*.pdf), HTML(\*.html,default) format. You can download plots(2) with png, svg or pdf format. You can download all results as a powerpoint file(\*.pptx)(3). You can select editable vector graphics in powerpoint file(default).  
+
+![8.png](fig/8.png)
+
+
+\chapter{Analyze Your Own Data}
+
+In this chapter, I will discuss how to upload your own data to the `web-based meta-analysis` app and edit the data. Also you will be able to learn how to use sample data as a template.
+
+\newpage
+\section{Upload data}
+
+You can upload your own data by clicking the `choose file` button(1). In the popup window, you can select your own data file. A data file with Microsoft excel format(\*.xlsx) or comma-separate value format(\*.csv) is allowed. Because an excel file contains calculations, functions or macros may cause error, the *.csv format is preferred. You can save an excel file with a *.csv format by "save as..." menu on excel. The limitation of file size is 30 MB. After selection of you data file, press `choose` button(arrow). 
+
+![9.png](fig/9.png)
+
+\newpage
+After a few seconds, the upload completed.
+
+\begin{figure}[!htbp]
+   \centering
+   \includegraphics[width=1.5in]{fig/10.png}
+\end{figure}
+
+You should select the uploaded_file(1) among the `Select Data` radio buttons. Your file is displayed at `Edit Data` window.
+
+
+![11.png](fig/11.png)
+
+\newpage
+\section{Edit data}
+
+You can edit your data by click a cell in the table. You can use your data table as a spreadsheet.
+
+\begin{figure}[!htbp]
+   \centering
+   \includegraphics[width=4in]{fig/12.png}
+\end{figure}
+
+\section{Insert/remove row}
+
+By right click the table, you can insert row or remove row.
+
+\begin{figure}[!htbp]
+   \centering
+   \includegraphics[width=4in]{fig/13.png}
+\end{figure}
+
+\section{Use sample data as a template}
+
+You can use a sample data as a template. As a example, please choose the `scared(binary)`(1) among the `Select Data` radio buttons. 
+
+![14.png](fig/14.png)
+
+You can choose `Remove all rows except 1`(arrow) after right click of the table. 
+
+![15.png](fig/15.png)
+
+\newpage
+All rows are removed except the first row. 
+
+\begin{figure}[!htbp]
+   \centering
+   \includegraphics[width=2in]{fig/16.png}
+\end{figure}
+
+
+You are not allowed remove the first row, but you can edit the data. If you want to change the structure of your data, you should make a data file with the other program and upload it.
+
+
+\chapter{A Complete Example - Meta-analysis of BCG trials}
+
+In this chapter, I will show you how to perform subgroup analysis, meta-regression, publication bias analysis using funnel plot, cumulative meta-analysis, sensitivity test and download report as a pdf file or as a powerpoint file
+
+\newpage
+\section{Select Data}
+
+Please choose the `bcg(binary2)`(1) among the `Select Data` radio buttons. The data will be displayed(arrow).
+
+![17.png](fig/17.png)
+
+\newpage
+\section{Select Data Format}
+
+Please choose the `Binary Data2` among the `Select Data Format` radio buttons. The variables will be assigned(arrow).
+
+![18.png](fig/18.png)
+
+\newpage
+\section{Select Additional Analysis}
+
+To perform subgroup analysis, select the `subgroup analysis` checkbox(1) and select `alloc` as a `Grouping Variable`(2). To perform a meta-analysis, select the `Meta Regression` checkbox(5) and select `latitude` as a `Moderator(s)`(4). To perform the publication bias test, cumulative meta-analysis and sensitivity test, select the checkboxes(5) and press the `Meta-analysis` button(arrow).
+
+\begin{figure}[!htbp]
+   \centering
+   \includegraphics[width=2in]{fig/19.png}
+\end{figure}
+
+
+\chapter{Customize Plot Options}
+
+In this chapter, I will show you how to customize the plots.
+
+\newpage
+\section{Show/hide Plot Options}
+
+You can customize your plot options by click the `Show/hide Plot options`.
+
+\begin{figure}[!htbp]
+   \centering
+   \includegraphics[width=2in]{fig/20.png}
+\end{figure}
+
+
+\subsection{show all study labels}
+You can choose whether or not all study labels be showed(1). You can label your studies by name or by study number(2. You can adjust the plot resolution and width and height of plot.
+
+\begin{figure}[!htbp]
+   \centering
+   \includegraphics[width=2in]{fig/21.png}
+\end{figure}
+
+\newpage
+
+\subsection{select studies be labelled}
+
+You can select some studies instead of labelling all studies. 
+
+\begin{figure}[!htbp]
+   \centering
+   \includegraphics[width=2in]{fig/23.png}
+\end{figure}
+
+
+### L'Abbe plot: no label
+
+![nolabel.pdf](fig/nolabel.pdf)
+
+### BLUP plot: all label
+
+![alllabel.png](fig/alllabel.png)
+
+### radial plot: all label with number
+
+![alllabelnumber.png](fig/alllabelnumber.png)
+
+### Meta-regression plot: some label
+
+![somelabel.pdf](fig/somelabel.png)
+
